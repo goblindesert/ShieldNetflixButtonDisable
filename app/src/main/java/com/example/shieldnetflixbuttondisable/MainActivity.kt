@@ -1,10 +1,12 @@
 package com.example.shieldnetflixbuttondisable
 
+import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.view.KeyEvent
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -51,9 +53,7 @@ class MainActivity : ComponentActivity() {
                     MainScreen(
                         serviceStatus = serviceStatus,
                         lastKeyLabel = lastKeyLabel,
-                        onOpenAccessibilitySettings = {
-                            startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
-                        }
+                        onOpenAccessibilitySettings = ::openAccessibilitySettings
                     )
                 }
             }
@@ -88,6 +88,34 @@ class MainActivity : ComponentActivity() {
         return enabledServices
             .split(':')
             .any { it.equals(expectedService, ignoreCase = true) }
+    }
+
+    private fun openAccessibilitySettings() {
+        if (tryOpenSettingsAction(Settings.ACTION_ACCESSIBILITY_SETTINGS)) {
+            return
+        }
+
+        if (tryOpenSettingsAction(Settings.ACTION_SETTINGS)) {
+            Toast.makeText(
+                this,
+                "Open Device Preferences > Accessibility.",
+                Toast.LENGTH_LONG
+            ).show()
+            return
+        }
+
+        serviceStatus = "Open Shield Settings manually, then go to Device Preferences > Accessibility."
+    }
+
+    private fun tryOpenSettingsAction(action: String): Boolean {
+        return try {
+            startActivity(Intent(action))
+            true
+        } catch (_: ActivityNotFoundException) {
+            false
+        } catch (_: SecurityException) {
+            false
+        }
     }
 }
 
@@ -133,5 +161,11 @@ private fun MainScreen(
         Button(onClick = onOpenAccessibilitySettings) {
             Text(text = "Open Accessibility Settings")
         }
+        Spacer(modifier = Modifier.height(18.dp))
+        Text(
+            text = "If Shield cannot open that screen directly, use Settings > Device Preferences > Accessibility.",
+            fontSize = 16.sp,
+            textAlign = TextAlign.Center
+        )
     }
 }
