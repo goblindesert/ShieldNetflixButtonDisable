@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Shield Netflix Button Disable</string>
+    <string name="accessibility_service_description">Blocks the Netflix button on the NVIDIA Shield remote.</string>
+</resources>
