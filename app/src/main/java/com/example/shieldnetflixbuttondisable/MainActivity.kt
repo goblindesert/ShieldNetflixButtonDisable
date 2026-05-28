@@ -3,7 +3,6 @@ package com.example.shieldnetflixbuttondisable
 import android.content.ComponentName
 import android.os.Bundle
 import android.provider.Settings
-import android.view.KeyEvent
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -36,7 +35,6 @@ import com.example.shieldnetflixbuttondisable.ui.theme.ShieldNetflixButtonDisabl
 class MainActivity : ComponentActivity() {
 
     private var serviceEnabled by mutableStateOf(false)
-    private var buttonTestLabel by mutableStateOf("After enabling the service, press the Netflix button. If Netflix does not open, the blocker is working.")
 
     @OptIn(ExperimentalTvMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,8 +47,7 @@ class MainActivity : ComponentActivity() {
                     shape = RectangleShape
                 ) {
                     MainScreen(
-                        serviceEnabled = serviceEnabled,
-                        buttonTestLabel = buttonTestLabel
+                        serviceEnabled = serviceEnabled
                     )
                 }
             }
@@ -60,15 +57,6 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         serviceEnabled = isBlockerServiceEnabled()
-    }
-
-    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        buttonTestLabel = if (keyCode == KeyEvent.KEYCODE_BUTTON_12) {
-            "Netflix button detected. Enable the service, then press it again to confirm Netflix stays closed."
-        } else {
-            "Remote button detected. To test blocking, press the Netflix button after the service is enabled."
-        }
-        return super.onKeyDown(keyCode, event)
     }
 
     private fun isBlockerServiceEnabled(): Boolean {
@@ -92,8 +80,7 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
 private fun MainScreen(
-    serviceEnabled: Boolean,
-    buttonTestLabel: String
+    serviceEnabled: Boolean
 ) {
     Column(
         modifier = Modifier
@@ -122,11 +109,6 @@ private fun MainScreen(
         InfoPanel(
             title = "Setup",
             body = "Open Settings > Device Preferences > Accessibility > Shield Netflix Button Disable, then switch it On."
-        )
-        Spacer(modifier = Modifier.height(14.dp))
-        InfoPanel(
-            title = "Button Test",
-            body = buttonTestLabel
         )
         Spacer(modifier = Modifier.height(14.dp))
         InfoPanel(
