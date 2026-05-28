@@ -16,19 +16,19 @@ Android TV app for NVIDIA Shield that blocks the Netflix remote button using an 
 On the NVIDIA Shield, install and open Downloader by AFTVnews, then enter:
 
 ```text
-8432913
+2690423
 ```
 
 Short URL:
 
 ```text
-https://aftv.news/8432913
+https://aftv.news/2690423
 ```
 
 Direct APK URL:
 
 ```text
-https://github.com/goblindesert/ShieldNetflixButtonDisable/releases/download/v1.0.1/ShieldNetflixButtonDisable-v1.0.1.apk
+https://github.com/goblindesert/ShieldNetflixButtonDisable/releases/download/v1.0.0/ShieldNetflixButtonDisable-v1.0.apk
 ```
 
 ### Build Locally
