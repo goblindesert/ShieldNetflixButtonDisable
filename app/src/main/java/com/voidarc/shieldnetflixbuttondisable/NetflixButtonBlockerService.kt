@@ -1,4 +1,4 @@
-package com.example.shieldnetflixbuttondisable
+package com.voidarc.shieldnetflixbuttondisable
 
 import android.accessibilityservice.AccessibilityService
 import android.util.Log

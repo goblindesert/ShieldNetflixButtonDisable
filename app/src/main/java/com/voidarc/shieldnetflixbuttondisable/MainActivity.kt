@@ -1,4 +1,4 @@
-package com.example.shieldnetflixbuttondisable
+package com.voidarc.shieldnetflixbuttondisable
 
 import android.content.ComponentName
 import android.os.Bundle
@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.sp
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Surface
 import androidx.tv.material3.Text
-import com.example.shieldnetflixbuttondisable.ui.theme.ShieldNetflixButtonDisableTheme
+import com.voidarc.shieldnetflixbuttondisable.ui.theme.ShieldNetflixButtonDisableTheme
 
 class MainActivity : ComponentActivity() {
 

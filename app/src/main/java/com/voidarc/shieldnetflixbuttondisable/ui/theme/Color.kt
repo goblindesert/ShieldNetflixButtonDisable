@@ -1,4 +1,4 @@
-package com.example.shieldnetflixbuttondisable.ui.theme
+package com.voidarc.shieldnetflixbuttondisable.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

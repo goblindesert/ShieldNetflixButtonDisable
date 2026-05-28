@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.shieldnetflixbuttondisable"
+    namespace = "com.voidarc.shieldnetflixbuttondisable"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.shieldnetflixbuttondisable"
+        applicationId = "com.voidarc.shieldnetflixbuttondisable"
         minSdk = 23
         targetSdk = 36
         versionCode = 3
