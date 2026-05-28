@@ -6,6 +6,8 @@ import android.provider.Settings
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -85,27 +87,28 @@ private fun MainScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(64.dp),
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 48.dp, vertical = 28.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Image(
             painter = painterResource(id = R.drawable.app_logo),
             contentDescription = null,
-            modifier = Modifier.size(160.dp),
+            modifier = Modifier.size(118.dp),
             contentScale = ContentScale.Fit
         )
-        Spacer(modifier = Modifier.height(18.dp))
+        Spacer(modifier = Modifier.height(12.dp))
         Text(
             text = "Shield Netflix Button Disable",
-            fontSize = 30.sp,
+            fontSize = 26.sp,
             textAlign = TextAlign.Center
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(14.dp))
         StatusPanel(
             enabled = serviceEnabled
         )
-        Spacer(modifier = Modifier.height(22.dp))
+        Spacer(modifier = Modifier.height(14.dp))
         InfoPanel(
             title = "Setup",
             body = "Open Settings > Device Preferences > Accessibility > Shield Netflix Button Disable, then switch it On."
@@ -137,7 +140,7 @@ private fun InfoPanel(
 ) {
     Box(
         modifier = Modifier
-            .fillMaxWidth(0.82f)
+            .fillMaxWidth(0.9f)
             .padding(horizontal = 12.dp)
     ) {
         Column(
@@ -146,13 +149,13 @@ private fun InfoPanel(
         ) {
             Text(
                 text = title,
-                fontSize = 18.sp,
+                fontSize = 17.sp,
                 textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.height(6.dp))
+            Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = body,
-                fontSize = 16.sp,
+                fontSize = 15.sp,
                 textAlign = TextAlign.Center
             )
         }
